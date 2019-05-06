@@ -1,40 +1,37 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import Signup from "./Signup.jsx";
-import Login from "./Login.jsx";
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import Signup from "./Signup.jsx"
+import Login from "./Login.jsx"
 
 class UnconnectedApp extends Component {
   render = () => {
     if (this.props.lgin) {
-      return (
-        <div>
+      return(<div>
           <h1>Welcome to Alibay</h1>
-          <Signup />
+          <Signup /> 
           <Login />
         </div>
-      );
-    } else {
-      return (
-        <div>
-          <div>Alibay site!!!!</div>
-          <div> categories </div>
-        </div>
-      );
+      )
     }
-    /* return(<div> 
+    return(<div> 
         <div>Alibay site!!!!</div>
         <SearchBar />
         <Account />
         <Categories />
-        <Items />
+        <div>
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+        </div>
       </div>
-      )*/
-  };
+    )
+  }
 }
 
 let mapStateToProps = state => {
-  return { lgin: state.loggedIn };
-};
+  return { lgin: state.loggedIn }
+}
 
-let App = connect(mapStateToProps)(UnconnectedApp);
-export default App;
+let App = connect(mapStateToProps)(UnconnectedApp)
+export default App
