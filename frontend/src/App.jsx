@@ -14,7 +14,12 @@ class UnconnectedApp extends Component {
         </div>
       );
     } else {
-      return <div>Alibay site!!!!</div>;
+      return (
+        <div>
+          <div>Alibay site!!!!</div>
+          <div> categories </div>
+        </div>
+      );
     }
   };
 }

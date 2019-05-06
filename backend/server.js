@@ -44,24 +44,25 @@ app.post("logout", upload.none(), function(res, req) {
   let sessionID = req.cookies.sessionID;
   delete sessions[sessionID];
   res.send("success!");
+});
 
-  app.post("/addItem", upload.none(), function(req, res) {
-    let sessionID = req.body.sessionID;
-    let itemPrice = req.body.price;
-    let description = req.body.description;
-    let itemID = genID();
-    itemDescriptions[itemID] = {
-      description: description,
-      price: itemPrice
-    };
-    let username = sessions[sessionID];
-    if (usersItems[username] === undefined) {
-      usersItems[username] = [];
-    }
-    usersItems[username] = usersItems[username].concat(itemID);
-    res.send({ success: true });
-  });
-  app.listen(4000, function() {
-    console.log("listening on port 4000");
-  });
+app.post("/addItem", upload.none(), function(req, res) {
+  let sessionID = req.body.sessionID;
+  let itemPrice = req.body.price;
+  let description = req.body.description;
+  let itemID = genID();
+  itemDescriptions[itemID] = {
+    description: description,
+    price: itemPrice
+  };
+  let username = sessions[sessionID];
+  if (usersItems[username] === undefined) {
+    usersItems[username] = [];
+  }
+  usersItems[username] = usersItems[username].concat(itemID);
+  res.send({ success: true });
+});
+
+app.listen(4000, function() {
+  console.log("listening on port 4000");
 });
