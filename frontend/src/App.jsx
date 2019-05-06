@@ -5,11 +5,11 @@ import Login from "./Login.jsx";
 
 class UnconnectedApp extends Component {
   render = () => {
-    if (!this.props.lgin) {
+    if (this.props.lgin) {
       return (
         <div>
           <h1>Welcome to Alibay</h1>
-          <Signup /> <br />
+          <Signup />
           <Login />
         </div>
       );
@@ -21,6 +21,14 @@ class UnconnectedApp extends Component {
         </div>
       );
     }
+    /* return(<div> 
+        <div>Alibay site!!!!</div>
+        <SearchBar />
+        <Account />
+        <Categories />
+        <Items />
+      </div>
+      )*/
   };
 }
 
