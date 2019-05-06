@@ -7,7 +7,7 @@ let reducer = (state, action) => {
 
 const store = createStore(
   reducer,
-  { loggedIn: false },
+  { loggedIn: false, querySearch: "" },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
