@@ -31,9 +31,11 @@ class UnconnectedApp extends Component {
         <SearchBar />
         <Account />
         <Categories />
-        <Items />
+        <div>
+          <AllItem />
+        </div>
       </div>
-      )*/
+    )*/
   };
 }
 
