@@ -2,7 +2,9 @@ let express = require("express");
 let app = express();
 let multer = require("multer");
 let upload = multer();
+let cors = require("cors");
 app.use("/", express.static(__dirname + "/public"));
+app.use(cors());
 
 let passwords = {}; //associates a username with a password
 let sessions = {}; //associates a session id to a username
