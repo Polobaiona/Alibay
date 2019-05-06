@@ -5,15 +5,23 @@ import Login from "./Login.jsx";
 
 class UnconnectedApp extends Component {
   render = () => {
-    return (
-      <div>
-        <h1>Welcome to Alibay</h1>
-        <Signup /> <br />
-        <Login />
-      </div>
-    );
+    if (!this.props.lgin) {
+      return (
+        <div>
+          <h1>Welcome to Alibay</h1>
+          <Signup /> <br />
+          <Login />
+        </div>
+      );
+    } else {
+      return <div>Alibay site!!!!</div>;
+    }
   };
 }
 
-let App = connect()(UnconnectedApp);
+let mapStateToProps = state => {
+  return { lgin: state.loggedIn };
+};
+
+let App = connect(mapStateToProps)(UnconnectedApp);
 export default App;
