@@ -4,7 +4,7 @@ let reducer = (state, action) => {
     return { ...state, loggedIn: true };
   }
   if (action.type === "qSearch") {
-    return(...state,)
+    return(...state, querySearch: action.q)
   }
 
   return state;
