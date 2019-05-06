@@ -3,8 +3,12 @@ let app = express();
 let multer = require("multer");
 let upload = multer();
 let cors = require("cors");
+<<<<<<< HEAD
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+=======
+>>>>>>> a685751cdac8ac4fc3ecbbf522af3ce7e3c9d4c9
 app.use("/", express.static(__dirname + "/public"));
+app.use(cors());
 
 let passwords = {}; //associates a username with a password
 let sessions = {}; //associates a session id to a username
