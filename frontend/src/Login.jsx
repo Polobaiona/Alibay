@@ -33,7 +33,7 @@ class UnconnectedLogin extends Component {
       })
       .then(responseBody => {
         let body = JSON.parse(responseBody);
-
+        console.log(body);
         if (!body.success) {
           alert("login failed");
           return;

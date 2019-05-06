@@ -3,10 +3,9 @@ let reducer = (state, action) => {
   if (action.type === "login-success") {
     return { ...state, loggedIn: true };
   }
-  /* if (action.type === "qSearch") {
+  /*if (action.type === "qSearch") {
     return{...state, querySearch: action.q}
   }*/
-
   return state;
 };
 
