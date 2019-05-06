@@ -19,13 +19,14 @@ class UnconnectedLogin extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-
+    console.log("hit submit");
     let data = new FormData();
     data.append("username", this.state.username);
     data.append("password", this.state.password);
     fetch("http://localhost:4000/login", {
       method: "POST",
-      body: data
+      body: data,
+      credentials: "include"
     })
       .then(x => {
         return x.text();
