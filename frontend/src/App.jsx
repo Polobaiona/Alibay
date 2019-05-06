@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Signup from "./Signup.jsx";
 import Login from "./Login.jsx";
+import Categories from "./Categories.jsx";
 
 class UnconnectedApp extends Component {
   render = () => {
@@ -17,7 +18,11 @@ class UnconnectedApp extends Component {
       return (
         <div>
           <div>Alibay site!!!!</div>
-          <div> categories </div>
+
+          <div className="flex">
+            <Categories />
+            <div> items </div>
+          </div>
         </div>
       );
     }
