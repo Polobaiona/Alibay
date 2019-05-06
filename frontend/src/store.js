@@ -1,6 +1,11 @@
 import { createStore } from "redux";
 let reducer = (state, action) => {
-  if (action.type === "login-success") return { ...state, loggedIn: true };
+  if (action.type === "login-success") {
+    return { ...state, loggedIn: true };
+  }
+  if (action.type === "qSearch") {
+    return(...state,)
+  }
 
   return state;
 };
