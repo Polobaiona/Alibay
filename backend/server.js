@@ -2,6 +2,8 @@ let express = require("express");
 let app = express();
 let multer = require("multer");
 let upload = multer();
+let cors = require("cors");
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use("/", express.static(__dirname + "/public"));
 
 let passwords = {}; //associates a username with a password
@@ -17,7 +19,7 @@ app.post("/signup", upload.none(), function(req, res) {
   let username = req.body.username;
   let password = req.body.password;
   passwords[username] = password;
-
+  console.log("signup successful" + username + password);
   res.send("signup successful");
 });
 app.post("/login", upload.none(), function(req, res) {
@@ -27,15 +29,17 @@ app.post("/login", upload.none(), function(req, res) {
   let expectedPassword = passwords[username];
 
   if (expectedPassword !== passwordGiven) {
+    console.log("wrong password");
     res.send("<html><body> invalid username or password</body></html>");
     return;
   }
+  console.log("correct password");
   let sessionID = genID();
   sessions[sessionID] = username;
   res.cookie("id", sessionID);
   res.send(
     JSON.stringify({
-      sessionID: sessionID
+      success: true
     })
   );
 });

@@ -5,7 +5,7 @@ import Login from "./Login.jsx";
 
 class UnconnectedApp extends Component {
   render = () => {
-    if (this.props.lgin) {
+    if (!this.props.lgin) {
       return (
         <div>
           <h1>Welcome to Alibay</h1>
