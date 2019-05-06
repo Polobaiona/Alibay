@@ -30,7 +30,8 @@ class UnconnectedSearchBar extends Component {
                         <input onChange={this.queryHandler} type="text" /> 
                         <input type="submit" /> 
                     </form> 
-                  </div>) 
+                  </div>
+                  ) 
            } 
 }
 let mapStateToProps = store => {

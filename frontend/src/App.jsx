@@ -20,10 +20,7 @@ class UnconnectedApp extends Component {
         <Account />
         <Categories />
         <div>
-          <Item />
-          <Item />
-          <Item />
-          <Item />
+          <AllItem />
         </div>
       </div>
     )
