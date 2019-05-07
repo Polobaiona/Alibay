@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
+import Cart from "./Cart.jsx";
 
 let renderRoot = () => {
   return (
@@ -19,7 +20,11 @@ let renderSellItemForm = () => {
 };
 
 let renderCart = () => {
-  return <div>makeshift cart</div>;
+  return (
+    <div>
+      <Cart />
+    </div>
+  );
 };
 class Account extends Component {
   render = () => {
