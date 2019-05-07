@@ -21,11 +21,10 @@ let genID = function() {
 app.get("/items", (req, res) => {
   MongoClient.connect(url, (err, db) => {
     if (err) throw err;
-    db.everythingyouneedtoknow.renameCollection("details");
     console.log(url, err);
     let dbi = db.db("ItemsAlibay"); //calling our database variable dbi (database Items)
     dbi
-      .collection("details")
+      .collection("everythingyouneedtoknow")
       .find({})
       .toArray((err, result) => {
         if (err) throw err;
@@ -44,7 +43,7 @@ app.post("/category", (req, res) => {
     let query = {
       category: categorySearch
     };
-    dbo
+    dbi
       .collection("details")
       .find(query)
       .toArray((err, result) => {
@@ -57,7 +56,7 @@ app.post("/category", (req, res) => {
   });
 });
 app.post("/newItem", upload.none(), (req, res) => {
-  let body = JSON.parse(req.body.toString());
+  let body = req.body;
   let newItem = {};
   newItem[name] = req.body.name;
   newItem[price] = req.body.price;
