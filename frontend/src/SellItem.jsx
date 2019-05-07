@@ -30,7 +30,10 @@ class UnconnectedSellItem extends Component {
   };
   handleOnSubmit = evt => {
     evt.preventDefault();
-
+    if (this.state.category === undefined) {
+      alert("Enter a category!");
+      return;
+    }
     let data = new FormData();
     data.append("name", this.state.name);
     data.append("price", this.state.price);
@@ -41,7 +44,7 @@ class UnconnectedSellItem extends Component {
       body: data,
       credentials: "include"
     });
-
+    alert("Item put up for sale!");
     console.log(this.state);
   };
 
@@ -63,7 +66,8 @@ class UnconnectedSellItem extends Component {
         <div>
           {" "}
           Choose a category
-          <select name="dropdown" onChange={this.handleCategoryChange}>
+          <select required name="dropdown" onChange={this.handleCategoryChange}>
+            <option value="undefined">---------</option>
             <option value="Electronics">Electronics</option>
             <option value="Cars">Cars</option>
             <option value="Decor">Decor</option>
