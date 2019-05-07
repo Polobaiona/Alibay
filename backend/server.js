@@ -56,21 +56,25 @@ app.post("/category", (req, res) => {
   });
 });
 app.post("/newItem", upload.none(), (req, res) => {
-  let body = req.body;
-  let newItem = {};
-  newItem[name] = req.body.name;
-  newItem[price] = req.body.price;
-  newItem[description] = req.body.description;
-  newItem[category] = req.body.category;
+  // let { name, price, description, category } = req.body;
+  // console.log(req.body);
+  // let newItem = {};
+  // newItem.name = name;
+  // newItem[price] = body.price;
+  // newItem[description] = body.description;
+  // newItem[category] = body.category;
+  let newItem = req.body;
   MongoClient.connect(url, (err, db) => {
     if (err) throw err;
-    var dbi = db.db("ItemsAlibay");
-    dbo.collection("details").insertOne(newItem, (err, result) => {
-      if (err) throw err;
-      console.log("success");
-      db.close;
-      res.send(JSON.stringify({ status: true, message: "new item created" }));
-    });
+    var dbo = db.db("ItemsAlibay");
+    dbo
+      .collection("everythingyouneedtoknow")
+      .insertOne(newItem, (err, result) => {
+        if (err) throw err;
+        console.log("success");
+        db.close;
+        res.send(JSON.stringify({ status: true, message: "new item created" }));
+      });
   });
 });
 
@@ -90,7 +94,7 @@ app.post("/login", upload.none(), function(req, res) {
 
   if (expectedPassword !== passwordGiven) {
     console.log("wrong password");
-    res.send("<html><body> invalid username or password</body></html>");
+    res.send(JSON.stringify({ success: false }));
     return;
   }
   console.log("correct password");

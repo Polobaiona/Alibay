@@ -13,7 +13,7 @@ let renderRoot = () => {
       <div className="flex">
         <h1>Alibay site!!!!</h1>
         <h2> search bar goes here</h2>
-        <Link to="/Account">Account</Link>
+        <Link to="/Account">My Account</Link>
       </div>
 
       <div className="flex">

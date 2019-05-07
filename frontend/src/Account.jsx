@@ -8,7 +8,7 @@ let renderRoot = () => {
     <div>
       <div>Welcome (your name here)</div>
       <div>
-        <Link to="/sellItem">To sell an item click this here </Link>
+        <Link to="/sellItem">To sell an item click here </Link>
       </div>
       <div>
         <Link to="/viewCart">Click here to view cart</Link>
