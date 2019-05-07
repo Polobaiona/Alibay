@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-class Categories extends Component {
+class unconnectedCategories extends Component {
   function1 = () => {
     console.log("electronics");
     this.props.dispatch({ type: "electronics" });
@@ -49,5 +50,5 @@ class Categories extends Component {
     );
   };
 }
-
+let Categories = connect()(unconnectedCategories);
 export default Categories;

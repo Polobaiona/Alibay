@@ -3,6 +3,30 @@ import { connect } from "react-redux";
 import Signup from "./Signup.jsx";
 import Login from "./Login.jsx";
 import Categories from "./Categories.jsx";
+import Item from "./Item.jsx";
+import Account from "./Account.jsx";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+
+let renderRoot = () => {
+  return (
+    <div>
+      <div>Alibay site!!!!</div>
+      <Link to="/Account">Account</Link>
+      <div className="flex">
+        <Categories />
+        <Item />
+      </div>
+    </div>
+  );
+};
+
+let renderAccount = () => {
+  return (
+    <div>
+      <Account />
+    </div>
+  );
+};
 
 class UnconnectedApp extends Component {
   render = () => {
@@ -17,12 +41,12 @@ class UnconnectedApp extends Component {
     } else {
       return (
         <div>
-          <div>Alibay site!!!!</div>
-
-          <div className="flex">
-            <Categories />
-            <div> items </div>
-          </div>
+          <BrowserRouter>
+            <div>
+              <Route exact={true} path="/" render={renderRoot} />
+              <Route exact={true} path="/Account" render={renderAccount} />
+            </div>
+          </BrowserRouter>
         </div>
       );
     }

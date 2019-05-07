@@ -7,6 +7,7 @@ let reducer = (state, action) => {
     return{...state, querySearch: action.q}
   }*/
   if (action.type === "electronics") {
+    console.log("state changed to electronics");
     return { ...state, category: "electronics" };
   }
   if (action.type === "cars") {
