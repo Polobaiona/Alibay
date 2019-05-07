@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import Cart from "./Cart.jsx";
+import SellForm from "./SellItem.jsx";
 
 let renderRoot = () => {
   return (
@@ -16,7 +17,11 @@ let renderRoot = () => {
   );
 };
 let renderSellItemForm = () => {
-  return <div>placeholder form</div>;
+  return (
+    <div>
+      <SellForm />
+    </div>
+  );
 };
 
 let renderCart = () => {
