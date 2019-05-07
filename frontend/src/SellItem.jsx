@@ -34,6 +34,13 @@ class UnconnectedSellItem extends Component {
     let data = new FormData();
     data.append("name", this.state.name);
     data.append("price", this.state.price);
+    data.append("description", this.state.description);
+    data.append("category", this.state.category);
+    fetch("http://localhost:4000/newItem", {
+      method: "POST",
+      body: data,
+      credentials: "include"
+    });
 
     console.log(this.state);
   };

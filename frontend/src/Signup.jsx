@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-class Signup extends Component {
+class UnconnectedSignup extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,6 +24,8 @@ class Signup extends Component {
     data.append("username", this.state.username);
     data.append("password", this.state.password);
     fetch("http://localhost:4000/signup", { method: "POST", body: data });
+    alert("signup successful!");
+    this.props.dispatch({ type: "login-success" });
   };
 
   render = () => {
@@ -40,5 +43,5 @@ class Signup extends Component {
     );
   };
 }
-
+let Signup = connect()(UnconnectedSignup);
 export default Signup;
