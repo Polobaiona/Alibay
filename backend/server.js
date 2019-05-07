@@ -36,8 +36,8 @@ app.get("/items", (req, res) => {
   });
 });
 
-app.get("/category", (req, res) => {
-  let category = req.query.category;
+app.post("/category", (req, res) => {
+  let categorySearch = req.query.category;
   MongoClient.connect(url, (err, db) => {
     if (err) throw err;
     let dbi = db.db("ItemsAlibay");
