@@ -10,8 +10,12 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 let renderRoot = () => {
   return (
     <div>
-      <div>Alibay site!!!!</div>
-      <Link to="/Account">Account</Link>
+      <div className="flex">
+        <h1>Alibay site!!!!</h1>
+        <h2> search bar goes here</h2>
+        <Link to="/Account">Account</Link>
+      </div>
+
       <div className="flex">
         <Categories />
         <Item />

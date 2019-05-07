@@ -8,7 +8,7 @@ class UnconnectedItem extends Component {
   }
 
   render = () => {
-    return <div>hello world</div>;
+    return <div>Brandon's code goes here</div>;
   };
 }
 
