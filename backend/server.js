@@ -3,6 +3,9 @@ let app = express();
 let multer = require("multer");
 let upload = multer();
 let cors = require("cors");
+let MongoClient = require("mongodb").MongoClient;
+let url =
+  "mongodb+srv://pauljeambrun:Hormadi64@paul-database-pvljy.mongodb.net/test?retryWrites=true";
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use("/", express.static(__dirname + "/public"));
 
@@ -14,6 +17,64 @@ let itemDescriptions = {}; // associates an item id to its descriptions
 let genID = function() {
   return Math.floor(Math.random() * 1000000000000);
 };
+
+app.get("/items", (req, res) => {
+  MongoClient.connect(url, (err, db) => {
+    if (err) throw err;
+    db.everythingyouneedtoknow.renameCollection("details");
+    console.log(url, err);
+    let dbi = db.db("ItemsAlibay"); //calling our database variable dbi (database Items)
+    dbi
+      .collection("details")
+      .find({})
+      .toArray((err, result) => {
+        if (err) throw err;
+        let itemDetails = result;
+        db.close();
+        res.send(JSON.stringify({ status: true, itemDetails }));
+      });
+  });
+});
+
+app.get("/category", (req, res) => {
+  let category = req.query.category;
+  MongoClient.connect(url, (err, db) => {
+    if (err) throw err;
+    let dbi = db.db("ItemsAlibay");
+    let query = {
+      category: categorySearch
+    };
+    dbo
+      .collection("details")
+      .find(query)
+      .toArray((err, result) => {
+        if (err) throw err;
+        let itemDetails = result;
+        console.log(result);
+        db.close();
+        res.send(JSON.stringify({ status: true, itemDetails }));
+      });
+  });
+});
+app.post("/newItem", upload.none(), (req, res) => {
+  let body = JSON.parse(req.body.toString());
+  let newItem = {};
+  newItem[name] = req.body.name;
+  newItem[price] = req.body.price;
+  newItem[description] = req.body.description;
+  newItem[category] = req.body.category;
+  MongoClient.connect(url, (err, db) => {
+    if (err) throw err;
+    var dbi = db.db("ItemsAlibay");
+    dbo.collection("details").insertOne(newItem, (err, result) => {
+      if (err) throw err;
+      console.log("success");
+      db.close;
+      res.send(JSON.stringify({ status: true, message: "new item created" }));
+    });
+  });
+});
+
 app.post("/signup", upload.none(), function(req, res) {
   console.log("/signup", req.body);
   let username = req.body.username;
