@@ -3,9 +3,9 @@ let reducer = (state, action) => {
   if (action.type === "login-success") {
     return { ...state, loggedIn: true };
   }
-  /*if (action.type === "qSearch") {
-    return{...state, querySearch: action.q}
-  }*/
+  if (action.type === "qSearch") {
+    return{...state, category: action.q}
+  }
   if (action.type === "electronics") {
     console.log("state changed to electronics");
     return { ...state, category: "electronics" };
@@ -27,7 +27,7 @@ let reducer = (state, action) => {
 
 const store = createStore(
   reducer,
-  { loggedIn: false, querySearch: "", category: "", cart: ["hello", "world"] },
+  { loggedIn: false, category: "", cart: ["hello", "world"] },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

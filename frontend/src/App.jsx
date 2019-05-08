@@ -5,6 +5,7 @@ import Login from "./Login.jsx";
 import Categories from "./Categories.jsx";
 import ItemCollection from "./ItemCollection.jsx";
 import Account from "./Account.jsx";
+import SearchBar from "./SearchBar.jsx";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
 let renderRoot = () => {
@@ -12,7 +13,7 @@ let renderRoot = () => {
     <div>
       <div className="flex">
         <h1>Alibay site!!!!</h1>
-        <h2> search bar goes here</h2>
+        <SearchBar />
         <Link to="/Account">My Account</Link>
       </div>
 
@@ -54,16 +55,6 @@ class UnconnectedApp extends Component {
         </div>
       );
     }
-    /* return(<div> 
-        <div>Alibay site!!!!</div>
-        <SearchBar />
-        <Account />
-        <Categories />
-        <div>
-          <AllItems />
-        </div>
-      </div>
-    )*/
   };
 }
 

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-let itemDetails =[]
+let allItems =[]
 
 fetch("http://localhost:4000/items", { method: "GET" })
   .then(x => {
@@ -10,20 +10,20 @@ fetch("http://localhost:4000/items", { method: "GET" })
     console.log("rendering item details");
     let body = JSON.parse(responseBody);
 
-    let items = body.itemDetails;
-    console.log(itemDetails);
+    let items = body.allItems;
+    console.log(allItems);
 
     items.map(item => {
-        itemDetails.push(item);
+        allItems.push(item);
     });
   });
 
-  class UnconnectedItemDetails extends Component {
+  class UnconnectedallItems extends Component {
       constructor(){
           super()
       }
     render = () => {
-        let displayItem = itemDetails.filter(item => {
+        let displayItem = allItems.filter(item => {
             return(item.name.includes()) 
         })
         return(<div>
@@ -35,5 +35,5 @@ fetch("http://localhost:4000/items", { method: "GET" })
     }
 
   }
-  let ItemDetails = connect()(UnconnectedItemDetails)
-  export default ItemDetails
+  let allItems = connect()(UnconnectedallItems)
+  export default allItems
