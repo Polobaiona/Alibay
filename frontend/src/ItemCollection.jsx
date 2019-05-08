@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Route, Link } from "react-router-dom";
+import ItemDetails from './ItemDetails.jsx'
 
 class UnconnectedItemCollection extends Component {
   constructor(props) {
@@ -30,12 +31,14 @@ class UnconnectedItemCollection extends Component {
     return searchFiltered.map(ele => {
       let url = "http://localhost:4000" + ele.url;
       return (<BrowserRouter>
-        <div>
-          <Link to="/ItemDetails"><div className="name"> {ele.name}</div>
-          <img className="img" src={url} /></Link>
-          <div>{ele.price}</div>
-          <Route exact={true} path="/ItemDetails" render={this.renderItemDetails} />
-        </div></BrowserRouter>
+          <div>
+            <Link to="/ItemDetails" >
+              <div className="name"> {ele.name}</div>
+              <img className="img" src={url} /></Link>
+              <div>{ele.price}</div>
+            <Route exact={true} path="/ItemDetails" render={this.renderItemDetails} />
+          </div>
+        </BrowserRouter>
       );
     });
   };
