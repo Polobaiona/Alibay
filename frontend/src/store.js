@@ -3,9 +3,9 @@ let reducer = (state, action) => {
   if (action.type === "login-success") {
     return { ...state, loggedIn: true };
   }
-  if (action.type === "qSearch") {
+  /*if (action.type === "qSearch") {
     return{...state, category: action.q}
-  }
+  }*/
   if (action.type === "electronics") {
     console.log("state changed to electronics");
     return { ...state, category: "electronics" };
