@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 let allItems =[]
 
-fetch("http://localhost:4000/ItemDetails")
+fetch("http://localhost:4000/items")
   .then(x => {
     return x.text();
   })

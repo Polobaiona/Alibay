@@ -9,6 +9,28 @@ import SearchBar from "./SearchBar.jsx";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
 class UnconnectedApp extends Component {
+
+  componentDidMount = () => {
+    let itemArray = []
+    fetch("http://localhost:4000/items")
+    .then(x => {
+      return x.text();
+    })
+    .then(responseBody => {
+      console.log("rendering item details");
+      let body = JSON.parse(responseBody);
+      let items = body.itemDetails;
+      console.log(itemArray);
+  
+      items.map(item => {
+        itemArray.push(item);
+      });
+    })
+    this.props.dispatch({
+      type: 'fetchItems', 
+      items: itemArray   
+    })
+  }
   renderAccount = () => <Account />
 
   renderRoot = () => {
@@ -54,7 +76,10 @@ class UnconnectedApp extends Component {
 }
 
 let mapStateToProps = state => {
-  return { loggedIn: state.loggedIn };
+  return { 
+    loggedIn: state.loggedIn,
+    allItems: state.allItems
+  };
 };
 
 let App = connect(mapStateToProps)(UnconnectedApp);
