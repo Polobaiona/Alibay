@@ -7,7 +7,7 @@ let MongoClient = require("mongodb").MongoClient;
 let url =
   "mongodb+srv://pauljeambrun:Hormadi64@paul-database-pvljy.mongodb.net/test?retryWrites=true";
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
-app.use("/", express.static(__dirname + "/images"));
+app.use("/images", express.static(__dirname + "/images"));
 
 let passwords = {}; //associates a username with a password
 let sessions = {}; //associates a session id to a username

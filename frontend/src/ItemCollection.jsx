@@ -32,10 +32,11 @@ class UnconnectedItemCollection extends Component {
 
   render = () => {
     return itemCategory.map(ele => {
+      let url = "http://localhost:4000" + ele.url;
       return (
         <div>
           <div> {ele.name}</div>
-          <img src={ele.url} />
+          <img className="img" src={url} />
           <div>{ele.price}</div>
         </div>
       );
