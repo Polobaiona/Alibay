@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Signup from "./Signup.jsx";
 import Login from "./Login.jsx";
 import Categories from "./Categories.jsx";
-import Item from "./Item.jsx";
+import ItemCollection from "./ItemCollection.jsx";
 import Account from "./Account.jsx";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
@@ -18,7 +18,7 @@ let renderRoot = () => {
 
       <div className="flex">
         <Categories />
-        <Item />
+        <ItemCollection />
       </div>
     </div>
   );
