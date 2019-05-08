@@ -12,7 +12,12 @@ class UnconnectedCart extends Component {
       return <div>{ele}</div>;
     });
 
-    return cartDisplay;
+    return (
+      <div>
+        <div>Items in your cart</div>
+        <div>{cartDisplay}</div>
+      </div>
+    );
   };
 }
 

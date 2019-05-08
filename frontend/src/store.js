@@ -3,30 +3,30 @@ let reducer = (state, action) => {
   if (action.type === "login-success") {
     return { ...state, loggedIn: true };
   }
-<<<<<<< HEAD
   if (action.type === "qSearch") {
     return { ...state, category: action.q };
   }
-=======
-  /*if (action.type === "qSearch") {
-    return{...state, category: action.q}
-  }*/
->>>>>>> 541d5551676fa7b247ed945f6bd432bd119a5a9a
-  if (action.type === "electronics") {
-    console.log("state changed to electronics");
-    return { ...state, category: "electronics" };
+  if (action.type === "sport") {
+    console.log("state changed to sport");
+    return { ...state, category: "sport" };
+  }
+  if (action.type === "electronic") {
+    return { ...state, category: "electronic" };
+  }
+  if (action.type === "kitchen") {
+    return { ...state, category: "kitchen" };
+  }
+  if (action.type === "bathroom") {
+    return { ...state, category: "bathroom" };
+  }
+  if (action.type === "pet") {
+    return { ...state, category: "pet" };
   }
   if (action.type === "car") {
     return { ...state, category: "car" };
   }
-  if (action.type === "decor") {
-    return { ...state, category: "decor" };
-  }
-  if (action.type === "gardening") {
-    return { ...state, category: "gardening" };
-  }
-  if (action.type === "sports") {
-    return { ...state, category: "sports" };
+  if (action.type === "other") {
+    return { ...state, category: "other" };
   }
   return state;
 };

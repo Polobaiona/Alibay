@@ -17,3 +17,8 @@ body {
   display: flex;
   color: #8e0a0a;
 }
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}

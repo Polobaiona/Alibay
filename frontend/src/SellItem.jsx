@@ -68,11 +68,13 @@ class UnconnectedSellItem extends Component {
           Choose a category
           <select required name="dropdown" onChange={this.handleCategoryChange}>
             <option value="undefined">---------</option>
-            <option value="Electronics">Electronics</option>
-            <option value="Cars">Cars</option>
-            <option value="Decor">Decor</option>
-            <option value="Gardening">Gardening</option>
-            <option value="Sports">Sports</option>
+            <option value="sport">sport</option>
+            <option value="electronic">electronic</option>
+            <option value="kitchen">kitchen</option>
+            <option value="bathroom">bathroom</option>
+            <option value="pet">pet</option>
+            <option value="car">car</option>
+            <option value="other">other</option>
           </select>
         </div>
         <div>
