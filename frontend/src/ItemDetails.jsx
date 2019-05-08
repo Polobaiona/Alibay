@@ -18,7 +18,7 @@ fetch("http://localhost:4000/items", { method: "GET" })
     });
   });
 
-  class UnconnectedallItems extends Component {
+  class UnconnectedAllItems extends Component {
       constructor(){
           super()
       }
@@ -35,5 +35,5 @@ fetch("http://localhost:4000/items", { method: "GET" })
     }
 
   }
-  let allItems = connect()(UnconnectedallItems)
-  export default allItems
+  let AllItems = connect()(UnconnectedAllItems)
+  export default AllItems

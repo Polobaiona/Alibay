@@ -3,9 +3,15 @@ let reducer = (state, action) => {
   if (action.type === "login-success") {
     return { ...state, loggedIn: true };
   }
+<<<<<<< HEAD
   if (action.type === "qSearch") {
     return { ...state, category: action.q };
   }
+=======
+  /*if (action.type === "qSearch") {
+    return{...state, category: action.q}
+  }*/
+>>>>>>> 541d5551676fa7b247ed945f6bd432bd119a5a9a
   if (action.type === "electronics") {
     console.log("state changed to electronics");
     return { ...state, category: "electronics" };
