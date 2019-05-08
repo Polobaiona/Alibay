@@ -1,3 +1,30 @@
+<<<<<<< HEAD
+class UnconnectedCategories extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            
+        }
+    }
+
+
+
+
+    render () => {
+        return(<div>
+            <ul>
+                <li><a href="/show-electronics"></a></li>
+                <li><a href="/show-category"></a></li>
+                <li><a href="/show-electronics"></a></li>
+                <li><a href="/show-electronics"></a></li>
+                <li><a href="/show-electronics"></a></li>
+                <li><a href="/show-electronics"></a></li>
+            </ul>
+        </div>)
+    }
+}
+let Categories = connect()(UnconnectedCategories);
+=======
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
@@ -51,4 +78,5 @@ class unconnectedCategories extends Component {
   };
 }
 let Categories = connect()(unconnectedCategories);
+>>>>>>> 45b849c60d640f95fb8d99a4e1c7c1954a8644f6
 export default Categories;
