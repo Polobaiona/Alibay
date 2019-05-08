@@ -8,34 +8,29 @@ import Account from "./Account.jsx";
 import SearchBar from "./SearchBar.jsx";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
-let renderRoot = () => {
-  return (
-    <div>
-      <div className="flex">
-        <h1>Alibay site!!!!</h1>
-        <SearchBar />
-        <Link to="/Account">My Account</Link>
-      </div>
-
-      <div className="flex">
-        <Categories />
-        <ItemCollection />
-      </div>
-    </div>
-  );
-};
-
-let renderAccount = () => {
-  return (
-    <div>
-      <Account />
-    </div>
-  );
-};
-
 class UnconnectedApp extends Component {
+  renderAccount = () => <Account />
+
+  renderRoot = () => {
+    console.log("app props", this.props);
+    return (
+      <div>
+        <div className="flex">
+          <h1>Alibay site!!!!</h1>
+          <SearchBar />
+          <Link to="/Account">My Account</Link>
+        </div>
+
+        <div className="flex">
+          <Categories />
+          <ItemCollection />
+        </div>
+      </div>
+    );
+  };
+
   render = () => {
-    if (!this.props.lgin) {
+    if (!this.props.loggedIn) {
       return (
         <div>
           <h1>Welcome to Alibay</h1>
@@ -48,8 +43,8 @@ class UnconnectedApp extends Component {
         <div>
           <BrowserRouter>
             <div>
-              <Route exact={true} path="/" render={renderRoot} />
-              <Route exact={true} path="/Account" render={renderAccount} />
+              <Route exact={true} path="/" render={this.renderRoot} />
+              <Route exact={true} path="/Account" render={this.renderAccount} />
             </div>
           </BrowserRouter>
         </div>
@@ -59,7 +54,7 @@ class UnconnectedApp extends Component {
 }
 
 let mapStateToProps = state => {
-  return { lgin: state.loggedIn };
+  return { loggedIn: state.loggedIn };
 };
 
 let App = connect(mapStateToProps)(UnconnectedApp);

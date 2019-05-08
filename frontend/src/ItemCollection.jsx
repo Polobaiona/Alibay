@@ -1,42 +1,56 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-let itemCategory = [];
+let items = [];
 
-fetch("http://localhost:4000/items", { method: "GET" })
+fetch("http://localhost:4000/items")
   .then(x => {
     return x.text();
   })
   .then(responseBody => {
-    console.log("hello");
     let body = JSON.parse(responseBody);
 
     let itemArray = body.itemDetails;
     console.log(itemArray);
 
     itemArray.map(item => {
-      itemCategory.push(item);
+      items.push(item);
     });
   });
 
 class UnconnectedItemCollection extends Component {
   constructor(props) {
     super(props);
-    this.state = { category: "" };
   }
 
-  //pull items from server(MongoDB)
-  //filter items by category
-  //display items (name, price, picture, id onClick)
-
-  //onClick -> <ItemDetails /> (import ItemDetails)
+  componentDidUpdate() {
+    console.log("in update", this.props);
+  }
 
   render = () => {
-    return itemCategory.map(ele => {
+    console.log(this.props.category);
+    let filteredItems = items;
+
+    if (this.props.category) {
+      filteredItems = items.filter(ele => {
+        return ele.category === this.props.category;
+      });
+    }
+    let searchFiltered = filteredItems.filter(ele => {
+      return(ele.name.includes(this.props.query)) 
+    })
+    console.log(searchFiltered);
+    return searchFiltered.map(ele => {
       let url = "http://localhost:4000" + ele.url;
       return (
         <div>
+<<<<<<< HEAD
           <div className="name">{ele.name}</div>
           <img className="img" src={url} />
+=======
+          <Link to="/ItemDetails" >
+          <div className="name"> {ele.name}</div>
+          <img className="img" src={url} /></Link>
+>>>>>>> 3191f8cc40fea507ba94ffa9d09d314dca9d3f1d
           <div>{ele.price}</div>
         </div>
       );
@@ -45,9 +59,12 @@ class UnconnectedItemCollection extends Component {
 }
 
 let mapStateToProps = state => {
-  return { category: state.category };
+  console.log("itemcollection redux state", state);
+  return { 
+    category: state.category,
+    query: state.querySearch
+   };
 };
-
 let ItemCollection = connect(mapStateToProps)(UnconnectedItemCollection);
 
 export default ItemCollection;
