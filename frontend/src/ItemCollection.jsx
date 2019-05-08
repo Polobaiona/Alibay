@@ -23,14 +23,6 @@ class UnconnectedItemCollection extends Component {
     super(props);
   }
 
-  componentDidUpdate() {
-    console.log("in update", this.props);
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-  }
-
   render = () => {
     console.log(this.props.category);
     let filteredItems = [];
