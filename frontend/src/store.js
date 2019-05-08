@@ -4,10 +4,9 @@ let reducer = (state, action) => {
     return { ...state, loggedIn: true };
   }
   if (action.type === "qSearch") {
-    return { ...state, category: action.q };
+    return { ...state, querySearch: action.q };
   }
   if (action.type === "sport") {
-    console.log("state changed to sport");
     return { ...state, category: "sport" };
   }
   if (action.type === "electronic") {
@@ -33,7 +32,7 @@ let reducer = (state, action) => {
 
 const store = createStore(
   reducer,
-  { loggedIn: false, category: undefined, cart: ["hello", "world"] },
+  { loggedIn: false, category: undefined, cart: ["hello", "world"], querySearch: "", itemAddress: "" },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

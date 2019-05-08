@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 let allItems =[]
 
-fetch("http://localhost:4000/items", { method: "GET" })
+fetch("http://localhost:4000/ItemDetails")
   .then(x => {
     return x.text();
   })
@@ -16,9 +16,9 @@ fetch("http://localhost:4000/items", { method: "GET" })
     items.map(item => {
         allItems.push(item);
     });
-  });
+  })
 
-  class UnconnectedAllItems extends Component {
+  class UnconnectedItemDetails extends Component {
       constructor(){
           super()
       }
@@ -35,5 +35,8 @@ fetch("http://localhost:4000/items", { method: "GET" })
     }
 
   }
-  let AllItems = connect()(UnconnectedAllItems)
-  export default AllItems
+  let mapStateToProps = () => {
+    return{}
+  }
+  let ItemDetails = connect(mapStateToProps)(UnconnectedItemDetails)
+  export default ItemDetails

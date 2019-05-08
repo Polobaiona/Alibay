@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 let items = [];
 
-fetch("http://localhost:4000/items", { method: "GET" })
+fetch("http://localhost:4000/items")
   .then(x => {
     return x.text();
   })
   .then(responseBody => {
-    console.log("hello");
     let body = JSON.parse(responseBody);
 
     let itemArray = body.itemDetails;
@@ -27,32 +26,26 @@ class UnconnectedItemCollection extends Component {
     console.log("in update", this.props);
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-  }
-
   render = () => {
     console.log(this.props.category);
-    let filteredItems = [];
+    let filteredItems = items;
 
-    if (this.props.category === undefined) {
-      console.log("undefined category");
-      filteredItems = items.map(ele => {
-        return ele;
-      });
-    } else {
+    if (this.props.category) {
       filteredItems = items.filter(ele => {
         return ele.category === this.props.category;
       });
     }
-
-    console.log(filteredItems);
-    return filteredItems.map(ele => {
+    let searchFiltered = filteredItems.filter(ele => {
+      return(ele.name.includes(this.props.query)) 
+    })
+    console.log(searchFiltered);
+    return searchFiltered.map(ele => {
       let url = "http://localhost:4000" + ele.url;
       return (
         <div>
+          <Link to="/ItemDetails" >
           <div className="name"> {ele.name}</div>
-          <img className="img" src={url} />
+          <img className="img" src={url} /></Link>
           <div>{ele.price}</div>
         </div>
       );
@@ -62,9 +55,11 @@ class UnconnectedItemCollection extends Component {
 
 let mapStateToProps = state => {
   console.log("itemcollection redux state", state);
-  return { category: state.category };
+  return { 
+    category: state.category,
+    query: state.querySearch
+   };
 };
-
 let ItemCollection = connect(mapStateToProps)(UnconnectedItemCollection);
 
 export default ItemCollection;
