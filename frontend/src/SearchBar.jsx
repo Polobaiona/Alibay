@@ -18,7 +18,7 @@ class UnconnectedSearchBar extends Component {
                     <form onSubmit={this.handleSubmit}>  
                         Search
                         <input onChange={this.handleSearchChange} type="text" /> 
-                        <button onClick={handleSearchChange}>Search!</button>
+                        <button onClick={this.handleSearchChange}>Search!</button>
                     </form> 
                   </div>
                   ) 
