@@ -5,7 +5,7 @@ class UnconnectedSearchBar extends Component {
         super(props)
         this.state = {searchWords: ""} 
     }
-    queryHandler = evt => {
+    handleSearchChange = evt => {
         this.setState({searchWords: event.target.value})
         this.props.dispatch({
             type: 'qSearch',
@@ -17,7 +17,7 @@ class UnconnectedSearchBar extends Component {
             console.log("form submitted") 
             let data = new FormData() 
             data.append("search", this.state.searchWords) 
-            fetch("http://localhost:4000/querysearch", { 
+            fetch("http://localhost:4000/handleSearchChange", { 
                     method: "POST", 
                     body: data, 
                     credentials: "include" 
@@ -27,7 +27,8 @@ class UnconnectedSearchBar extends Component {
         return (  
                 <div>  
                     <form onSubmit={this.handleSubmit}>  
-                        <input onChange={this.queryHandler} type="text" /> 
+                        Search
+                        <input onChange={this.handleSearchChange} type="text" /> 
                         <input type="submit" /> 
                     </form> 
                   </div>
