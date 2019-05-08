@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-let itemCategory = [];
+let items = [];
 
 fetch("http://localhost:4000/items", { method: "GET" })
   .then(x => {
@@ -14,24 +14,41 @@ fetch("http://localhost:4000/items", { method: "GET" })
     console.log(itemArray);
 
     itemArray.map(item => {
-      itemCategory.push(item);
+      items.push(item);
     });
   });
 
 class UnconnectedItemCollection extends Component {
   constructor(props) {
     super(props);
-    this.state = { category: "" };
+    // this.state = { category: "" };
   }
 
-  //pull items from server(MongoDB)
-  //filter items by category
-  //display items (name, price, picture, id onClick)
+  componentDidUpdate() {
+    console.log("in update", this.props);
+  }
 
-  //onClick -> <ItemDetails /> (import ItemDetails)
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+  }
 
   render = () => {
-    return itemCategory.map(ele => {
+    console.log(this.props.category);
+    let filteredItems = [];
+
+    if (this.props.category === undefined) {
+      console.log("undefined category");
+      filteredItems = items.map(ele => {
+        return ele;
+      });
+    } else {
+      filteredItems = items.filter(ele => {
+        return ele.category === this.props.category;
+      });
+    }
+
+    console.log(filteredItems);
+    return filteredItems.map(ele => {
       let url = "http://localhost:4000" + ele.url;
       return (
         <div>
@@ -45,6 +62,7 @@ class UnconnectedItemCollection extends Component {
 }
 
 let mapStateToProps = state => {
+  console.log("itemcollection redux state", state);
   return { category: state.category };
 };
 

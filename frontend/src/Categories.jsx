@@ -3,27 +3,27 @@ import { connect } from "react-redux";
 
 class unconnectedCategories extends Component {
   function1 = () => {
-    console.log("electronics");
+    console.log("state changed to electronics");
     this.props.dispatch({ type: "electronics" });
   };
 
   function2 = () => {
-    console.log("cars");
-    this.props.dispatch({ type: "cars" });
+    console.log("state changed to car");
+    this.props.dispatch({ type: "car" });
   };
 
   function3 = () => {
-    console.log("decor");
+    console.log("state changed to decor");
     this.props.dispatch({ type: "decor" });
   };
 
   function4 = () => {
-    console.log("gardening");
+    console.log("state changed to gardening");
     this.props.dispatch({ type: "gardening" });
   };
 
   function5 = () => {
-    console.log("sports");
+    console.log("state changed to sports");
     this.props.dispatch({ type: "sports" });
   };
   render = () => {
