@@ -3,6 +3,9 @@ let app = express();
 let multer = require("multer");
 let upload = multer();
 let cors = require("cors");
+let MongoClient = require("mongodb").MongoClient;
+let url =
+  "mongodb+srv://pauljeambrun:Hormadi64@paul-database-pvljy.mongodb.net/test?retryWrites=true";
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use("/", express.static(__dirname + "/public"));
 
@@ -14,6 +17,67 @@ let itemDescriptions = {}; // associates an item id to its descriptions
 let genID = function() {
   return Math.floor(Math.random() * 1000000000000);
 };
+
+app.get("/items", (req, res) => {
+  MongoClient.connect(url, (err, db) => {
+    if (err) throw err;
+    console.log(url, err);
+    let dbi = db.db("ItemsAlibay"); //calling our database variable dbi (database Items)
+    dbi
+      .collection("everythingyouneedtoknow")
+      .find({})
+      .toArray((err, result) => {
+        if (err) throw err;
+        let itemDetails = result;
+        db.close();
+        res.send(JSON.stringify({ status: true, itemDetails }));
+      });
+  });
+});
+
+app.post("/category", (req, res) => {
+  let categorySearch = req.query.category;
+  MongoClient.connect(url, (err, db) => {
+    if (err) throw err;
+    let dbi = db.db("ItemsAlibay");
+    let query = {
+      category: categorySearch
+    };
+    dbi
+      .collection("details")
+      .find(query)
+      .toArray((err, result) => {
+        if (err) throw err;
+        let itemDetails = result;
+        console.log(result);
+        db.close();
+        res.send(JSON.stringify({ status: true, itemDetails }));
+      });
+  });
+});
+app.post("/newItem", upload.none(), (req, res) => {
+  // let { name, price, description, category } = req.body;
+  // console.log(req.body);
+  // let newItem = {};
+  // newItem.name = name;
+  // newItem[price] = body.price;
+  // newItem[description] = body.description;
+  // newItem[category] = body.category;
+  let newItem = req.body;
+  MongoClient.connect(url, (err, db) => {
+    if (err) throw err;
+    var dbo = db.db("ItemsAlibay");
+    dbo
+      .collection("everythingyouneedtoknow")
+      .insertOne(newItem, (err, result) => {
+        if (err) throw err;
+        console.log("success");
+        db.close;
+        res.send(JSON.stringify({ status: true, message: "new item created" }));
+      });
+  });
+});
+
 app.post("/signup", upload.none(), function(req, res) {
   console.log("/signup", req.body);
   let username = req.body.username;
@@ -30,7 +94,7 @@ app.post("/login", upload.none(), function(req, res) {
 
   if (expectedPassword !== passwordGiven) {
     console.log("wrong password");
-    res.send("<html><body> invalid username or password</body></html>");
+    res.send(JSON.stringify({ success: false }));
     return;
   }
   console.log("correct password");
