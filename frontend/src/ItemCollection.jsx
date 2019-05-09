@@ -32,7 +32,7 @@ class UnconnectedItemCollection extends Component {
       let url = "http://localhost:4000" + ele.url;
       return (
           <div>
-            <Link to="/ItemDetails/" + {ele.itemId}>
+            <Link to="/ItemDetails/" {ele.itemId}>
               <div className="name"> {ele.name}</div>
               <img className="img" src={url} /></Link>
               <div>{ele.price}</div>
