@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-import ItemDetails from "./ItemDetails.jsx";
 
 class UnconnectedItemCollection extends Component {
   constructor(props) {
@@ -9,10 +8,8 @@ class UnconnectedItemCollection extends Component {
   }
 
   render = () => {
-    console.log(this.props.category);
-    console.log(this.props.allItems);
+    console.log("category: ",this.props.category);
     let filteredItems = this.props.allItems;
-    console.log(filteredItems);
     if (this.props.category) {
       filteredItems = filteredItems.filter(ele => {
         return ele.category === this.props.category;
@@ -24,8 +21,7 @@ class UnconnectedItemCollection extends Component {
     console.log(searchFiltered);
     return searchFiltered.map(ele => {
       let url = "http://localhost:4000" + ele.url;
-      let linkTo = "/ItemDetails/" + ele.itemId;
-
+      let linkTo = "/ItemDetails/" + ele._id;
       return (
         <div className="details">
           <div>
@@ -41,7 +37,7 @@ class UnconnectedItemCollection extends Component {
 }
 
 let mapStateToProps = state => {
-  console.log("itemcollection redux state", state);
+  console.log("item collection redux state", state);
   return {
     category: state.category,
     query: state.querySearch,

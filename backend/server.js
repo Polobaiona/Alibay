@@ -33,7 +33,7 @@ app.get("/items", (req, res) => {
         db.close();
         res.send(JSON.stringify({ status: true, itemDetails }));
       });
-  });
+  });``
 });
 
 app.post("/ItemDetails", upload.none(), (req, res) => {
