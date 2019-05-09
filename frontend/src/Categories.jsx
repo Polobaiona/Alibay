@@ -41,33 +41,33 @@ class unconnectedCategories extends Component {
   };
   render = () => {
     return (
-      <div>
-        <div className="categories">
+      <div className="categories-container">
+        <div className="categories" onClick={this.function1}>
           {" "}
-          <div onClick={this.function1}> All Items</div>
+          <div> All Items</div>
         </div>
-        <div className="categories">
+        <div className="categories" onClick={this.function2}>
           {" "}
-          <div onClick={this.function2}> Sport</div>
+          <div> Sport</div>
         </div>
-        <div className="categories">
-          <div onClick={this.function3}> Electronic</div>
+        <div className="categories" onClick={this.function3}>
+          <div> Electronic</div>
         </div>
-        <div className="categories">
-          <div onClick={this.function4}> Kitchen</div>
+        <div className="categories" onClick={this.function4}>
+          <div> Kitchen</div>
         </div>
-        <div className="categories">
-          <div onClick={this.function5}> Bathroom</div>
+        <div className="categories" onClick={this.function5}>
+          <div> Bathroom</div>
         </div>
-        <div className="categories">
+        <div className="categories" onClick={this.function6}>
           {" "}
-          <div onClick={this.function6}> Pet</div>
+          <div> Pet</div>
         </div>
-        <div className="categories">
-          <div onClick={this.function7}> Car</div>
+        <div className="categories" onClick={this.function7}>
+          <div> Car</div>
         </div>
-        <div className="categories">
-          <div onClick={this.function8}> Other</div>
+        <div className="categories" onClick={this.function8}>
+          <div> Other</div>
         </div>
       </div>
     );

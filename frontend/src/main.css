@@ -37,19 +37,23 @@ body {
   width: 100px;
   height: 10px;
   margin-bottom: 5px;
-  margin-top: 5px;
+  cursor: pointer;
 }
 
 .site-header {
   text-align: left;
+  margin-left: 400px;
 }
 
 .search-bar {
   text-align: center;
+  margin-top: 20px;
 }
 
 .account-link {
   text-align: right;
+  margin-left: 700px;
+  margin-top: 20px;
 }
 
 .details {
@@ -61,4 +65,12 @@ body {
   border-radius: 25px;
   width: 200px;
   text-align: center;
+}
+
+.top-bar {
+  background-color: darkblue;
+}
+
+.categories-container {
+  margin-top: 35px;
 }

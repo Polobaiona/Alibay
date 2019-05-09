@@ -39,11 +39,12 @@ class UnconnectedApp extends Component {
     console.log("app props", this.props);
     return (
       <div>
-        <div className="flex">
-          <h1 className="site-header">Alibay site!!!!</h1>
+        <div className="flex top-bar">
           <div className="search-bar">
             <SearchBar />
           </div>
+          <h1 className="site-header">Alibay</h1>
+
           <div className="account-link">
             <Link to="/Account">My Account</Link>
           </div>
