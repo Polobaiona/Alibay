@@ -32,7 +32,7 @@ app.get("/items", (req, res) => {
         db.close();
         res.send(JSON.stringify({ status: true, itemDetails }));
       });
-  });
+  });``
 });
 
 app.get("/ItemDetails", (req, res) => {
@@ -42,7 +42,7 @@ app.get("/ItemDetails", (req, res) => {
     let dbi = db.db("ItemsAlibay");
     dbi
       .collection("everythingyouneedtoknow")
-      .findOne({})
+      .find({})
       .toArray((err, result) => {
         let results = function() {
           if (item._id === undefined) throw err;
