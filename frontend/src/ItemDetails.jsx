@@ -5,7 +5,7 @@ class UnconnectedItemDetails extends Component {
   constructor() {
     super();
     this.state = {
-      price: "loading ...",
+      price: "loading ..."
     };
   }
 
@@ -27,7 +27,7 @@ class UnconnectedItemDetails extends Component {
         console.log(responseBody);
         let body = JSON.parse(responseBody);
         let itemDetails = body.result;
-        console.log(itemDetails);
+        console.log("Picture of kevin: " + itemDetails.url);
         this.setState({
           url: itemDetails.url,
           price: itemDetails.price,
