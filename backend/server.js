@@ -2,6 +2,7 @@ let express = require("express");
 let app = express();
 let multer = require("multer");
 let upload = multer();
+let ObjectID = require("mongodb").ObjectID;
 let cors = require("cors");
 let MongoClient = require("mongodb").MongoClient;
 let url =
@@ -39,9 +40,9 @@ app.post("/ItemDetails", upload.none(), (req, res) => {
   MongoClient.connect(url, (err, db) => {
     if (err) throw err;
     let dbi = db.db("ItemsAlibay");
-    dbi
+    let result = dbi
       .collection("everythingyouneedtoknow")
-      .findOne({ _id: objectID(req.body.id) });
+      .findOne({ _id: ObjectID(req.body.id) });
     {
       console.log(result);
       // let results = function() {
@@ -49,9 +50,8 @@ app.post("/ItemDetails", upload.none(), (req, res) => {
       //   item._id = req.body._id;
       //   return item[_id];
       // };
-      let itemDetails = result;
       db.close();
-      res.send(JSON.stringify({ status: true, itemDetails }));
+      res.send(JSON.stringify({ status: true, result }));
     }
   });
 });
