@@ -14,6 +14,7 @@ body {
   height: 100px;
 }
 .name {
+  text-align: center;
   display: flex;
   color: #8e0a0a;
 }
@@ -49,4 +50,15 @@ body {
 
 .account-link {
   text-align: right;
+}
+
+.details {
+  background: white;
+  word-wrap: break-word;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-style: solid;
+  border-radius: 25px;
+  width: 200px;
+  text-align: center;
 }

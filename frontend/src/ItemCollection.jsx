@@ -27,7 +27,7 @@ class UnconnectedItemCollection extends Component {
       let linkTo = "/ItemDetails/" + ele.itemId;
 
       return (
-        <div>
+        <div className="details">
           <div>
             <div className="name"> {ele.name}</div>
             <img className="img" src={url} />
