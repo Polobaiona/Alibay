@@ -5,9 +5,9 @@ class UnconnectedItemDetails extends Component {
   constructor() {
     super();
     this.state = {
-      price: "please fix me",
-      description: "this is not working as intended",
-      name: "hello",
+      price: "loading ...",
+      description: "",
+      name: "",
     };
   }
 
@@ -33,6 +33,7 @@ class UnconnectedItemDetails extends Component {
     console.log("fetching item details") 
     let data = new FormData() 
     data.append("_id", this.props.path) 
+    console.log('props.path', this.props.path)
     fetch("http://localhost:4000/ItemDetails", { 
       method: "POST", 
       body: data, 

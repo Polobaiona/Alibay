@@ -10,9 +10,8 @@ import ItemDetails from "./ItemDetails.jsx"
 import { BrowserRouter, Route, Link } from "react-router-dom"
 
 class UnconnectedApp extends Component {
-
   componentDidMount = () => {
-    let itemArray = []
+    let itemArray = [];
     fetch("http://localhost:4000/items")
     .then(x => {
       return x.text()
@@ -30,11 +29,11 @@ class UnconnectedApp extends Component {
       })
     })
     this.props.dispatch({
-      type: 'fetchItems', 
-      items: itemArray   
-    })
-  }
-  renderAccount = () => <Account />
+      type: "fetchItems",
+      items: itemArray
+    });
+  };
+  renderAccount = () => <Account />;
 
   renderItemDetails = routerData => {
     let path = routerData.match.params.itemId
@@ -49,14 +48,21 @@ class UnconnectedApp extends Component {
     return (
       <div>
         <div className="flex">
-          <h1>Alibay site!!!!</h1>
-          <SearchBar />
-          <Link to="/Account">My Account</Link>
+          <h1 className="site-header">Alibay site!!!!</h1>
+          <div className="search-bar">
+            <SearchBar />
+          </div>
+          <div className="account-link">
+            <Link to="/Account">My Account</Link>
+          </div>
         </div>
-
         <div className="flex">
-          <Categories />
-          <ItemCollection />
+          <div>
+            <Categories />
+          </div>
+          <div className="wrapper">
+            <ItemCollection />
+          </div>
         </div>
       </div>
     )
@@ -78,7 +84,11 @@ class UnconnectedApp extends Component {
             <div>
               <Route exact={true} path="/" render={this.renderRoot} />
               <Route exact={true} path="/Account" render={this.renderAccount} />
-              <Route exact={true} path="/ItemDetails/:itemId" render={this.renderItemDetails} />
+              <Route
+                exact={true}
+                path="/ItemDetails/:itemId"
+                render={this.renderItemDetails}
+              />
             </div>
           </BrowserRouter>
         </div>
@@ -88,7 +98,7 @@ class UnconnectedApp extends Component {
 }
 
 let mapStateToProps = state => {
-  return { 
+  return {
     loggedIn: state.loggedIn,
     allItems: state.allItems
   }

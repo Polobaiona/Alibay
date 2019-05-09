@@ -13,7 +13,7 @@ class UnconnectedCart extends Component {
     });
 
     return (
-      <div>
+      <div className="cart">
         <div>Items in your cart</div>
         <div>{cartDisplay}</div>
       </div>

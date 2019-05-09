@@ -42,31 +42,31 @@ class unconnectedCategories extends Component {
   render = () => {
     return (
       <div>
-        <div>
+        <div className="categories">
           {" "}
           <div onClick={this.function1}> All Items</div>
         </div>
-        <div>
+        <div className="categories">
           {" "}
           <div onClick={this.function2}> Sport</div>
         </div>
-        <div>
+        <div className="categories">
           <div onClick={this.function3}> Electronic</div>
         </div>
-        <div>
+        <div className="categories">
           <div onClick={this.function4}> Kitchen</div>
         </div>
-        <div>
+        <div className="categories">
           <div onClick={this.function5}> Bathroom</div>
         </div>
-        <div>
+        <div className="categories">
           {" "}
           <div onClick={this.function6}> Pet</div>
         </div>
-        <div>
+        <div className="categories">
           <div onClick={this.function7}> Car</div>
         </div>
-        <div>
+        <div className="categories">
           <div onClick={this.function8}> Other</div>
         </div>
       </div>

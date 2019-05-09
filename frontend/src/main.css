@@ -14,6 +14,7 @@ body {
   height: 100px;
 }
 .name {
+  text-align: center;
   display: flex;
   color: #8e0a0a;
 }
@@ -21,4 +22,43 @@ body {
 .wrapper {
   display: flex;
   flex-wrap: wrap;
+  padding-left: 30px;
+}
+
+.cart {
+  text-align: center;
+}
+
+.categories {
+  text-align: center;
+  border-style: solid;
+  border-radius: 25px;
+  padding: 14px;
+  width: 100px;
+  height: 10px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.site-header {
+  text-align: left;
+}
+
+.search-bar {
+  text-align: center;
+}
+
+.account-link {
+  text-align: right;
+}
+
+.details {
+  background: white;
+  word-wrap: break-word;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-style: solid;
+  border-radius: 25px;
+  width: 200px;
+  text-align: center;
 }
