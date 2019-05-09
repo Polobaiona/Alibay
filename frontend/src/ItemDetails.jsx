@@ -5,7 +5,12 @@ class UnconnectedItemDetails extends Component {
   constructor() {
     super();
     this.state = {
+<<<<<<< HEAD
       price: "loading ..."
+=======
+      price: "loading ...",
+      allCart: []
+>>>>>>> 4b6327f4a1332bd1df1285723a26d286246891bb
     };
   }
 
@@ -36,6 +41,15 @@ class UnconnectedItemDetails extends Component {
         });
       });
   };
+  addToCartHandler = () => {
+    this.state.allCart.push(this.state)
+    console.log(this.state.allCart)
+    this.props.dispatch({
+      type: "addToCart",
+      addCart: this.state.allCart
+    })
+  }
+
   render = () => {
     let url = "http://localhost:4000" + this.state.url;
     return (
@@ -44,6 +58,7 @@ class UnconnectedItemDetails extends Component {
         <div>{this.state.name}</div>
         <div>{this.state.price}</div>
         <div>{this.state.description}</div>
+        <button onClick={this.addToCartHandler}>Add to Cart</button>
       </div>
     );
   };

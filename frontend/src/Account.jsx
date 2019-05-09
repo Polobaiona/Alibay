@@ -6,12 +6,12 @@ import SellForm from "./SellItem.jsx";
 let renderRoot = () => {
   return (
     <div>
-      <div>Welcome (your name here)</div>
+      <div>Welcome</div>
       <div>
         <Link to="/sellItem">To sell an item click here </Link>
       </div>
       <div>
-        <Link to="/viewCart">Click here to view cart</Link>
+        <Link to="/Cart">Click here to view cart</Link>
       </div>
     </div>
   );
@@ -38,7 +38,7 @@ class Account extends Component {
         <div>
           <Route exact={true} path="/account" render={renderRoot} />
           <Route exact={true} path="/sellItem" render={renderSellItemForm} />
-          <Route exact={true} path="/viewCart" render={renderCart} />
+          <Route exact={true} path="/Cart" render={renderCart} />
         </div>
       </BrowserRouter>
     );

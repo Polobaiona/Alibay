@@ -40,9 +40,6 @@ class UnconnectedApp extends Component {
     return(<ItemDetails path={path}/>)
   }
 
-  
-  
-
   renderRoot = () => {
     console.log("app props", this.props)
     return (
