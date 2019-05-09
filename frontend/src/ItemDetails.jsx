@@ -58,5 +58,11 @@ class UnconnectedItemDetails extends Component {
     );
   };
 }
-let ItemDetails = connect()(UnconnectedItemDetails);
+let mapStateToProps = state => {
+  console.log(state);
+  return {
+    cart: state.cart
+  };
+};
+let ItemDetails = connect(mapStateToProps)(UnconnectedItemDetails);
 export default ItemDetails;

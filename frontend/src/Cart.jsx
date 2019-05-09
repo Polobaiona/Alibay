@@ -9,13 +9,16 @@ class UnconnectedCart extends Component {
   render = () => {
     console.log(this.props.cart)
     return (
-      <div className="cart">
-        <div>Items in your cart</div>
+      <div className="wrap">
+        <div className="cart-title">Items in your cart</div>
         {this.props.cart.map(item => {
-          return(<div>
-            <img className="img" src={"http://localhost:4000" + item.url} />
-            <div>{item.name}</div>
-            <div>{item.price}</div>
+          return(<div className="cart-outer">
+            <img className="cart-img" src={"http://localhost:4000" + item.url} />
+            <div>
+            <div className="cart-name">{item.name}</div>
+            <div className="cart-inner">{item.price}</div>
+            <div className="cart-inner">{item.description}</div>
+            </div>
           </div>)
         })}
       </div>

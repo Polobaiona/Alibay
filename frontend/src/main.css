@@ -12,13 +12,47 @@ body {
   flex-wrap: wrap;
   padding-left: 30px;
 }
-
-.cart {
+.cart-title {
+  font-size: 40px;
   text-align: center;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.cart-outer { 
+  margin-left: 30px;
+  margin-top: 30px;
+  border: 2px solid rgb(168, 168, 168);
+  background-color: aliceblue;
+  width: 80%;
+  display: flex;
+}
+.cart-name {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+.cart-inner {
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+.cart-img {
+  height: 120px;
+  border: 2px solid rgb(168, 168, 168);
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+.cart-text {
+  border: 2px solid rgb(168, 168, 168);
 }
 .img {
   width: 90px;
   height: 90px;
+  vertical-align: right;
+  margin-bottom: 0.75em;
 }
 .categories {
   text-align: center;
