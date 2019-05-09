@@ -49,6 +49,7 @@ class UnconnectedItemDetails extends Component {
       let itemDetails = body.result
       console.log(itemDetails)
       this.setState({
+        url: itemDetails.url,
         price: itemDetails.price,
         description: itemDetails.description,
         name: itemDetails.name,
