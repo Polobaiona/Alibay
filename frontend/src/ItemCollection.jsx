@@ -1,42 +1,47 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-import ItemDetails from './ItemDetails.jsx'
+import ItemDetails from "./ItemDetails.jsx";
 
 class UnconnectedItemCollection extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidUpdate() {
-    console.log("in update", this.props);
-  }
-
-  renderItemDetails = () => <ItemDetails />
-
   render = () => {
     console.log(this.props.category);
-    console.log(this.props.allItems)
-    let filteredItems = this.props.allItems
-    console.log(filteredItems)
+    console.log(this.props.allItems);
+    let filteredItems = this.props.allItems;
+    console.log(filteredItems);
     if (this.props.category) {
       filteredItems = filteredItems.filter(ele => {
         return ele.category === this.props.category;
       });
     }
     let searchFiltered = filteredItems.filter(ele => {
-      return(ele.name.includes(this.props.query)) 
-    })
+      return ele.name.includes(this.props.query);
+    });
     console.log(searchFiltered);
     return searchFiltered.map(ele => {
       let url = "http://localhost:4000" + ele.url;
+      let linkTo = "/ItemDetails/" + ele.itemId;
+
       return (
+        <div>
           <div>
+<<<<<<< HEAD
             <Link to="/ItemDetails/" {ele.itemId}>
               <div className="name"> {ele.name}</div>
               <img className="img" src={url} /></Link>
               <div>{ele.price}</div>
+=======
+            <div className="name"> {ele.name}</div>
+            <img className="img" src={url} />
+            <div>{ele.price}</div>
+>>>>>>> 52175043c2fa7bfb965a0a24bf64ca1782c177c4
           </div>
+          <Link to={linkTo}> Link to Item Details</Link>
+        </div>
       );
     });
   };
@@ -44,11 +49,11 @@ class UnconnectedItemCollection extends Component {
 
 let mapStateToProps = state => {
   console.log("itemcollection redux state", state);
-  return { 
+  return {
     category: state.category,
     query: state.querySearch,
     allItems: state.allItems
-   };
+  };
 };
 let ItemCollection = connect(mapStateToProps)(UnconnectedItemCollection);
 

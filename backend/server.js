@@ -35,24 +35,24 @@ app.get("/items", (req, res) => {
   });``
 });
 
-app.get("/ItemDetails", (req, res) => {
-  ``;
+app.post("/ItemDetails", upload.none(), (req, res) => {
   MongoClient.connect(url, (err, db) => {
     if (err) throw err;
     let dbi = db.db("ItemsAlibay");
     dbi
       .collection("everythingyouneedtoknow")
-      .find({})
-      .toArray((err, result) => {
-        let results = function() {
-          if (item._id === undefined) throw err;
-          item._id = req.body._id;
-          return item[_id];
-        };
-        let itemDetails = results();
-        db.close();
-        res.send(JSON.stringify({ status: true, itemDetails }));
-      });
+      .findOne({ _id: objectID(req.body.id) });
+    {
+      console.log(result);
+      // let results = function() {
+      //   if (item._id === undefined) throw err;
+      //   item._id = req.body._id;
+      //   return item[_id];
+      // };
+      let itemDetails = result;
+      db.close();
+      res.send(JSON.stringify({ status: true, itemDetails }));
+    }
   });
 });
 
