@@ -38,11 +38,12 @@ class UnconnectedItemDetails extends Component {
       });
   };
   addToCartHandler = () => {
-    this.state.allCart.push(this.state)
-    console.log(this.state.allCart)
+    let cart = this.props.cart
+    cart.push(this.state)
+    console.log(cart)
     this.props.dispatch({
       type: "addToCart",
-      addCart: this.state.allCart
+      addCart: cart
     })
   }
 
@@ -59,5 +60,11 @@ class UnconnectedItemDetails extends Component {
     );
   };
 }
-let ItemDetails = connect()(UnconnectedItemDetails);
+let mapStateToProps = state => {
+  console.log(state)
+  return{
+    cart: state.cart,
+  }
+}
+let ItemDetails = connect(mapStateToProps)(UnconnectedItemDetails);
 export default ItemDetails;
