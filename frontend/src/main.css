@@ -7,18 +7,6 @@ body {
   display: flex;
 }
 
-.img {
-  background-color: white;
-  display: flex;
-  width: 100px;
-  height: 100px;
-}
-.name {
-  text-align: center;
-  display: flex;
-  color: #8e0a0a;
-}
-
 .wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -28,7 +16,10 @@ body {
 .cart {
   text-align: center;
 }
-
+.img {
+  width: 90px;
+  height: 90px;
+}
 .categories {
   text-align: center;
   border-style: solid;
@@ -60,5 +51,6 @@ body {
   border-style: solid;
   border-radius: 25px;
   width: 200px;
+  height: 200px;
   text-align: center;
 }

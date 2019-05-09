@@ -29,7 +29,7 @@ class UnconnectedItemCollection extends Component {
       return (
         <div className="details">
           <div>
-            <div className="name"> {ele.name}</div>
+            <div> {ele.name}</div>
             <img className="img" src={url} />
             <div>{ele.price}</div>
           </div>
