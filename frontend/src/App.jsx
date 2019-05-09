@@ -6,6 +6,7 @@ import Categories from "./Categories.jsx";
 import ItemCollection from "./ItemCollection.jsx";
 import Account from "./Account.jsx";
 import SearchBar from "./SearchBar.jsx";
+import ItemDetails from "./ItemDetails.jsx"
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
 class UnconnectedApp extends Component {
@@ -17,7 +18,7 @@ class UnconnectedApp extends Component {
       return x.text();
     })
     .then(responseBody => {
-      console.log("rendering item details");
+      console.log("rendering all items");
       let body = JSON.parse(responseBody);
       let items = body.itemDetails;
       console.log(itemArray);
@@ -32,6 +33,8 @@ class UnconnectedApp extends Component {
     })
   }
   renderAccount = () => <Account />
+
+  renderItemDetails = () => <ItemDetails />
 
   renderRoot = () => {
     console.log("app props", this.props);
@@ -67,6 +70,7 @@ class UnconnectedApp extends Component {
             <div>
               <Route exact={true} path="/" render={this.renderRoot} />
               <Route exact={true} path="/Account" render={this.renderAccount} />
+              <Route exact={true} path="/ItemDetails/:itemId" render={this.renderItemDetails} />
             </div>
           </BrowserRouter>
         </div>

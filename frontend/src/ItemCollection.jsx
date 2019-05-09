@@ -30,15 +30,13 @@ class UnconnectedItemCollection extends Component {
     console.log(searchFiltered);
     return searchFiltered.map(ele => {
       let url = "http://localhost:4000" + ele.url;
-      return (<BrowserRouter>
+      return (
           <div>
-            <Link to="/ItemDetails" >
+            <Link to="/ItemDetails/" + {ele.itemId}>
               <div className="name"> {ele.name}</div>
               <img className="img" src={url} /></Link>
               <div>{ele.price}</div>
-            <Route exact={true} path="/ItemDetails" render={this.renderItemDetails} />
           </div>
-        </BrowserRouter>
       );
     });
   };
