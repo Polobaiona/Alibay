@@ -61,7 +61,7 @@ class UnconnectedApp extends Component {
           <div>
             <Categories />
           </div>
-          <div className="wrapper">
+          <div className="wrapper top-spacing">
             <ItemCollection />
           </div>
         </div>
