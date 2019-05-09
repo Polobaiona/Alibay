@@ -36,6 +36,10 @@ class UnconnectedItemDetails extends Component {
         });
       });
   };
+  addToCartHandler = () => {
+
+  }
+
   render = () => {
     let url = "http://localhost:4000" + this.state.url;
     return (
@@ -44,6 +48,7 @@ class UnconnectedItemDetails extends Component {
         <div>{this.state.name}</div>
         <div>{this.state.price}</div>
         <div>{this.state.description}</div>
+        <button thisCart={this.state} onClick={this.addToCartHandler}>Add to Cart</button>
       </div>
     );
   };

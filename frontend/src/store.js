@@ -42,7 +42,7 @@ const store = createStore(
   {
     loggedIn: false,
     category: undefined,
-    cart: ["hello", "world"],
+    cart: [],
     querySearch: "",
     allItems: undefined
   },

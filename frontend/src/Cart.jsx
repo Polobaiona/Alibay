@@ -4,18 +4,18 @@ import { connect } from "react-redux";
 class UnconnectedCart extends Component {
   constructor(props) {
     super(props);
-    this.state = { thisCart: [] };
+    this.state = { myCart: [] };
   }
 
   render = () => {
-    let cartDisplay = this.props.thisCart.map(ele => {
-      return <div>{ele}</div>;
-    });
-
+    this.state.myCart.push(this.props.thisCart)
+    let displayCart = this.state.myCart.map(ele => {
+       return(<div>{ele}</div>)
+    })
     return (
       <div className="cart">
         <div>Items in your cart</div>
-        <div>{cartDisplay}</div>
+        <div>{displayCart}</div>
       </div>
     );
   };

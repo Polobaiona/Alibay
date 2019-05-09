@@ -38,7 +38,7 @@ class Account extends Component {
         <div>
           <Route exact={true} path="/account" render={renderRoot} />
           <Route exact={true} path="/sellItem" render={renderSellItemForm} />
-          <Route exact={true} path="/viewCart" render={renderCart} />
+          <Route exact={true} path="/Cart" render={renderCart} />
         </div>
       </BrowserRouter>
     );
