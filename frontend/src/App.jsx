@@ -6,49 +6,55 @@ import Categories from "./Categories.jsx";
 import ItemCollection from "./ItemCollection.jsx";
 import Account from "./Account.jsx";
 import SearchBar from "./SearchBar.jsx";
-import ItemDetails from "./ItemDetails.jsx"
+import ItemDetails from "./ItemDetails.jsx";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
 class UnconnectedApp extends Component {
-
   componentDidMount = () => {
-    let itemArray = []
+    let itemArray = [];
     fetch("http://localhost:4000/items")
-    .then(x => {
-      return x.text();
-    })
-    .then(responseBody => {
-      console.log("rendering all items");
-      let body = JSON.parse(responseBody);
-      let items = body.itemDetails;
-      console.log(itemArray);
-  
-      items.map(item => {
-        itemArray.push(item);
-      });
-    })
-    this.props.dispatch({
-      type: 'fetchItems', 
-      items: itemArray   
-    })
-  }
-  renderAccount = () => <Account />
+      .then(x => {
+        return x.text();
+      })
+      .then(responseBody => {
+        console.log("rendering all items");
+        let body = JSON.parse(responseBody);
+        let items = body.itemDetails;
+        console.log(itemArray);
 
-  renderItemDetails = () => <ItemDetails />
+        items.map(item => {
+          itemArray.push(item);
+        });
+      });
+    this.props.dispatch({
+      type: "fetchItems",
+      items: itemArray
+    });
+  };
+  renderAccount = () => <Account />;
+
+  renderItemDetails = () => <ItemDetails />;
 
   renderRoot = () => {
     console.log("app props", this.props);
     return (
       <div>
         <div className="flex">
-          <h1>Alibay site!!!!</h1>
-          <SearchBar />
-          <Link to="/Account">My Account</Link>
+          <h1 className="site-header">Alibay site!!!!</h1>
+          <div className="search-bar">
+            <SearchBar />
+          </div>
+          <div className="account-link">
+            <Link to="/Account">My Account</Link>
+          </div>
         </div>
-
         <div className="flex">
-          <Categories />
-          <ItemCollection />
+          <div>
+            <Categories />
+          </div>
+          <div className="wrapper">
+            <ItemCollection />
+          </div>
         </div>
       </div>
     );
@@ -70,7 +76,11 @@ class UnconnectedApp extends Component {
             <div>
               <Route exact={true} path="/" render={this.renderRoot} />
               <Route exact={true} path="/Account" render={this.renderAccount} />
-              <Route exact={true} path="/ItemDetails/:itemId" render={this.renderItemDetails} />
+              <Route
+                exact={true}
+                path="/ItemDetails/:itemId"
+                render={this.renderItemDetails}
+              />
             </div>
           </BrowserRouter>
         </div>
@@ -80,7 +90,7 @@ class UnconnectedApp extends Component {
 }
 
 let mapStateToProps = state => {
-  return { 
+  return {
     loggedIn: state.loggedIn,
     allItems: state.allItems
   };
