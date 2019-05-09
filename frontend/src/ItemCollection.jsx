@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-//import ItemDetails from './ItemDetails.jsx'
+import ItemDetails from "./ItemDetails.jsx";
 
 class UnconnectedItemCollection extends Component {
   constructor(props) {
@@ -28,12 +28,12 @@ class UnconnectedItemCollection extends Component {
 
       return (
         <div>
-          <Link to={linkTo} />
           <div>
             <div className="name"> {ele.name}</div>
             <img className="img" src={url} />
             <div>{ele.price}</div>
           </div>
+          <Link to={linkTo}> Link to Item Details</Link>
         </div>
       );
     });

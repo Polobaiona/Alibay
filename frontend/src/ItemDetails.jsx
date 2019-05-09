@@ -1,23 +1,23 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class UnconnectedItemDetails extends Component {
-  constructor(){
-      super()
-      this.state = {
-        price: "please fix me", 
-        description: "this is not working as intended", 
-        name: "hello"
-      }
+  constructor() {
+    super();
+    this.state = {
+      price: "please fix me",
+      description: "this is not working as intended",
+      name: "hello"
+    };
   }
 
   componentDidMount = () => {
-    let itemArray = []
+    let itemArray = [];
     fetch("http://localhost:4000/ItemDetails")
       .then(x => {
         return x.text();
       })
-    .then(responseBody => {
+      .then(responseBody => {
         console.log("rendering item details");
         let body = JSON.parse(responseBody);
         this.setState({
@@ -25,20 +25,21 @@ class UnconnectedItemDetails extends Component {
           description: body.description,
           name: body.name,
           url: body.url
-        })
-    });
-  }
-  
-    render = () => {
-      let url = "http://localhost:4000" + this.state.url
-      return(<div>
-        <img className="img" src={url}></img>
+        });
+      });
+  };
+
+  render = () => {
+    let url = "http://localhost:4000" + this.state.url;
+    return (
+      <div>
+        <img className="img" src={url} />
         <div>{this.state.name}</div>
         <div>{this.state.price}</div>
         <div>{this.state.description}</div>
       </div>
-      )
-    }
-  }
-  let ItemDetails = connect()(UnconnectedItemDetails)
-  export default ItemDetails
+    );
+  };
+}
+let ItemDetails = connect()(UnconnectedItemDetails);
+export default ItemDetails;
