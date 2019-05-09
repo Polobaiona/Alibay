@@ -3,34 +3,39 @@ import { connect } from "react-redux";
 
 class unconnectedCategories extends Component {
   function1 = () => {
+    console.log("state changed to all items");
+    this.props.dispatch({ type: "all-items" });
+  };
+
+  function2 = () => {
     console.log("state changed to sport");
     this.props.dispatch({ type: "sport" });
   };
 
-  function2 = () => {
+  function3 = () => {
     console.log("state changed to electronic");
     this.props.dispatch({ type: "electronic" });
   };
 
-  function3 = () => {
+  function4 = () => {
     console.log("state changed to kitchen");
     this.props.dispatch({ type: "kitchen" });
   };
 
-  function4 = () => {
+  function5 = () => {
     console.log("state changed to bathroom");
     this.props.dispatch({ type: "bathroom" });
   };
 
-  function5 = () => {
+  function6 = () => {
     console.log("state changed to pet");
     this.props.dispatch({ type: "pet" });
   };
-  function6 = () => {
+  function7 = () => {
     console.log("state changed to car");
     this.props.dispatch({ type: "car" });
   };
-  function7 = () => {
+  function8 = () => {
     console.log("state changed to other");
     this.props.dispatch({ type: "other" });
   };
@@ -39,26 +44,30 @@ class unconnectedCategories extends Component {
       <div>
         <div>
           {" "}
-          <div onClick={this.function1}> Sport</div>
-        </div>
-        <div>
-          <div onClick={this.function2}> Electronic</div>
-        </div>
-        <div>
-          <div onClick={this.function3}> Kitchen</div>
-        </div>
-        <div>
-          <div onClick={this.function4}> Bathroom</div>
+          <div onClick={this.function1}> All Items</div>
         </div>
         <div>
           {" "}
-          <div onClick={this.function5}> Pet</div>
+          <div onClick={this.function2}> Sport</div>
         </div>
         <div>
-          <div onClick={this.function6}> Car</div>
+          <div onClick={this.function3}> Electronic</div>
         </div>
         <div>
-          <div onClick={this.function7}> Other</div>
+          <div onClick={this.function4}> Kitchen</div>
+        </div>
+        <div>
+          <div onClick={this.function5}> Bathroom</div>
+        </div>
+        <div>
+          {" "}
+          <div onClick={this.function6}> Pet</div>
+        </div>
+        <div>
+          <div onClick={this.function7}> Car</div>
+        </div>
+        <div>
+          <div onClick={this.function8}> Other</div>
         </div>
       </div>
     );
