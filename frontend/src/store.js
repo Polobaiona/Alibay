@@ -10,6 +10,9 @@ let reducer = (state, action) => {
   if (action.type === "qSearch") {
     return { ...state, querySearch: action.q };
   }
+  if (action.type === "addToCart") {
+    return { ...state, cart: action.addCart };
+  }
   if (action.type === "all-items") {
     return { ...state, category: undefined };
   }
@@ -42,7 +45,7 @@ const store = createStore(
   {
     loggedIn: false,
     category: undefined,
-    cart: [],
+    cart: "fuck you this doesn't work",
     querySearch: "",
     allItems: undefined
   },

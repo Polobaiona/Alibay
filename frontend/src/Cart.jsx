@@ -1,29 +1,34 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from "react"
+import { connect } from "react-redux"
 
 class UnconnectedCart extends Component {
   constructor(props) {
-    super(props);
-    this.state = { myCart: [] };
+    super(props)
   }
 
   render = () => {
-    this.state.myCart.push(this.props.thisCart)
-    let displayCart = this.state.myCart.map(ele => {
-       return(<div>{ele}</div>)
-    })
+    console.log(this.props.cart)
     return (
       <div className="cart">
         <div>Items in your cart</div>
-        <div>{displayCart}</div>
+        {this.props.cart.map(item => {
+          return(<div>
+            <img className="img" src={"http://localhost:4000" + item.url} />
+            <div>{item.name}</div>
+            <div>{item.price}</div>
+          </div>)
+        })}
       </div>
-    );
-  };
+    )
+  }
 }
 
 let mapStateToProps = state => {
-  return { thisCart: state.cart };
-};
-let Cart = connect(mapStateToProps)(UnconnectedCart);
+  return {
+    cart: state.cart
+  }
+}
 
-export default Cart;
+let Cart = connect(mapStateToProps)(UnconnectedCart)
+
+export default Cart
