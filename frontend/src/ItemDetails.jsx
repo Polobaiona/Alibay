@@ -6,29 +6,9 @@ class UnconnectedItemDetails extends Component {
     super();
     this.state = {
       price: "loading ...",
-      description: "",
-      name: ""
     };
   }
 
-  /*componentDidMount = () => {
-    fetch("http://localhost:4000/ItemDetails")
-      .then(x => {
-        return x.text();
-      })
-      .then(responseBody => {
-        console.log("rendering item details");
-        console.log(responseBody)
-        let body = JSON.parse(responseBody);
-        console.log(body)
-        this.setState({
-          price: body.price,
-          description: body.description,
-          name: body.name,
-          url: body.url
-        });
-      });
-  };*/
   componentDidMount = () => {
     console.log("fetching item details");
     let data = new FormData();
@@ -49,6 +29,7 @@ class UnconnectedItemDetails extends Component {
         let itemDetails = body.result;
         console.log(itemDetails);
         this.setState({
+          url: itemDetails.url,
           price: itemDetails.price,
           description: itemDetails.description,
           name: itemDetails.name
