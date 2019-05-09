@@ -29,16 +29,9 @@ class UnconnectedItemCollection extends Component {
       return (
         <div>
           <div>
-<<<<<<< HEAD
-            <Link to="/ItemDetails/" {ele.itemId}>
-              <div className="name"> {ele.name}</div>
-              <img className="img" src={url} /></Link>
-              <div>{ele.price}</div>
-=======
             <div className="name"> {ele.name}</div>
             <img className="img" src={url} />
             <div>{ele.price}</div>
->>>>>>> 52175043c2fa7bfb965a0a24bf64ca1782c177c4
           </div>
           <Link to={linkTo}> Link to Item Details</Link>
         </div>
