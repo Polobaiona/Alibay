@@ -46,6 +46,9 @@ class UnconnectedSellItem extends Component {
     });
     alert("Item put up for sale!");
     console.log(this.state);
+    this.props.dispatch({
+      type: "fetchItems"
+    })
   };
 
   render = () => {

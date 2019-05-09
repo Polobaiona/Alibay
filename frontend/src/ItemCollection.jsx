@@ -1,22 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-let items = [];
-
-fetch("http://localhost:4000/items", { method: "GET" })
-  .then(x => {
-    return x.text();
-  })
-  .then(responseBody => {
-    console.log("hello");
-    let body = JSON.parse(responseBody);
-
-    let itemArray = body.itemDetails;
-    console.log(itemArray);
-
-    itemArray.map(item => {
-      items.push(item);
-    });
-  });
+import { BrowserRouter, Route, Link } from "react-router-dom";
+//import ItemDetails from './ItemDetails.jsx'
 
 class UnconnectedItemCollection extends Component {
   constructor(props) {
@@ -25,27 +10,30 @@ class UnconnectedItemCollection extends Component {
 
   render = () => {
     console.log(this.props.category);
-    let filteredItems = [];
-
-    if (this.props.category === undefined) {
-      console.log("undefined category");
-      filteredItems = items.map(ele => {
-        return ele;
-      });
-    } else {
-      filteredItems = items.filter(ele => {
+    console.log(this.props.allItems);
+    let filteredItems = this.props.allItems;
+    console.log(filteredItems);
+    if (this.props.category) {
+      filteredItems = filteredItems.filter(ele => {
         return ele.category === this.props.category;
       });
     }
-
-    console.log(filteredItems);
-    return filteredItems.map(ele => {
+    let searchFiltered = filteredItems.filter(ele => {
+      return ele.name.includes(this.props.query);
+    });
+    console.log(searchFiltered);
+    return searchFiltered.map(ele => {
       let url = "http://localhost:4000" + ele.url;
+      let linkTo = "/ItemDetails/" + ele.itemId;
+
       return (
         <div>
-          <div className="name"> {ele.name}</div>
-          <img className="img" src={url} />
-          <div>{ele.price}</div>
+          <Link to={linkTo} />
+          <div>
+            <div className="name"> {ele.name}</div>
+            <img className="img" src={url} />
+            <div>{ele.price}</div>
+          </div>
         </div>
       );
     });
@@ -54,9 +42,12 @@ class UnconnectedItemCollection extends Component {
 
 let mapStateToProps = state => {
   console.log("itemcollection redux state", state);
-  return { category: state.category };
+  return {
+    category: state.category,
+    query: state.querySearch,
+    allItems: state.allItems
+  };
 };
-
 let ItemCollection = connect(mapStateToProps)(UnconnectedItemCollection);
 
 export default ItemCollection;
