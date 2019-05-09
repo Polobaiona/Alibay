@@ -5,7 +5,8 @@ class UnconnectedItemDetails extends Component {
   constructor() {
     super();
     this.state = {
-      price: "loading ..."
+      price: "loading ...",
+      allCart: []
     };
   }
 
