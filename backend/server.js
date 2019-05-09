@@ -37,22 +37,16 @@ app.get("/items", (req, res) => {
 });
 
 app.post("/ItemDetails", upload.none(), (req, res) => {
+  console.log(req.body._id)
   MongoClient.connect(url, (err, db) => {
     if (err) throw err;
     let dbi = db.db("ItemsAlibay");
     let result = dbi
       .collection("everythingyouneedtoknow")
-      .findOne({ _id: ObjectID(req.body.id) });
-    {
-      console.log(result);
-      // let results = function() {
-      //   if (item._id === undefined) throw err;
-      //   item._id = req.body._id;
-      //   return item[_id];
-      // };
-      db.close();
-      res.send(JSON.stringify({ status: true, result }));
-    }
+      .findOne({ _id: ObjectID(req.body._id) }, function(err, result) {
+        db.close();
+        res.send(JSON.stringify({ status: true, result }));
+      });
   });
 });
 
