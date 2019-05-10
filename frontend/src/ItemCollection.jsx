@@ -8,7 +8,7 @@ class UnconnectedItemCollection extends Component {
   }
 
   render = () => {
-    console.log("category: ",this.props.category);
+    console.log("category: ", this.props.category);
     let filteredItems = this.props.allItems;
     if (this.props.category) {
       filteredItems = filteredItems.filter(ele => {
@@ -29,7 +29,7 @@ class UnconnectedItemCollection extends Component {
             <img className="img" src={url} />
             <div>{ele.price}</div>
           </div>
-          <Link to={linkTo}> Link to Item Details</Link>
+          <Link to={linkTo}>Item Details</Link>
         </div>
       );
     });

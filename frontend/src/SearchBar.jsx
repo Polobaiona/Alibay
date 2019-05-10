@@ -17,7 +17,7 @@ class UnconnectedSearchBar extends Component {
       <div className="flex">
         <form onSubmit={this.handleSubmit}>
           <div className="flex">
-            <div>Search</div>
+            <div className="search-color">Search items</div>
             <div>
               <input onChange={this.handleSearchChange} type="text" />
             </div>

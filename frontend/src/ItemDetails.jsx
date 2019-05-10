@@ -44,6 +44,7 @@ class UnconnectedItemDetails extends Component {
       type: "addToCart",
       addCart: this.state.allCart
     });
+    alert("Item added to cart!");
   };
 
   render = () => {

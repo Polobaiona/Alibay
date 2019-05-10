@@ -6,12 +6,12 @@ import SellForm from "./SellItem.jsx";
 let renderRoot = () => {
   return (
     <div>
-      <div>Welcome</div>
-      <div>
-        <Link to="/sellItem">To sell an item click here </Link>
+      <h1 className="account-header">Account Details</h1>
+      <div className="sell-item">
+        <Link to="/sellItem">Sell an item</Link>
       </div>
-      <div>
-        <Link to="/Cart">Click here to view cart</Link>
+      <div className="view-cart">
+        <Link to="/Cart">View cart</Link>
       </div>
     </div>
   );
