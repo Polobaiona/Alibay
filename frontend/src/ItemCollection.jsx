@@ -16,7 +16,7 @@ class UnconnectedItemCollection extends Component {
       });
     }
     let searchFiltered = filteredItems.filter(ele => {
-      return ele.name.includes(this.props.query);
+      return ele.name.toLowerCase().includes(this.props.query);
     });
     console.log(searchFiltered);
     return searchFiltered.map(ele => {

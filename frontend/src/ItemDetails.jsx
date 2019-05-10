@@ -41,6 +41,7 @@ class UnconnectedItemDetails extends Component {
     let cart = this.props.cart
     cart.push(this.state)
     console.log(cart)
+    alert("Item added to cart!");
     this.props.dispatch({
       type: "addToCart",
       addCart: cart
@@ -50,12 +51,16 @@ class UnconnectedItemDetails extends Component {
   render = () => {
     let url = "http://localhost:4000" + this.state.url;
     return (
-      <div>
-        <img className="img" src={url} />
-        <div>{this.state.name}</div>
-        <div>{this.state.price}</div>
-        <div>{this.state.description}</div>
-        <button onClick={this.addToCartHandler}>Add to Cart</button>
+      <div className="cart-outer">
+        <img className="cart-img" src={url} />
+        <div>
+          <div className="cart-name">{this.state.name}</div>
+          <div className="cart-inner">{this.state.price}</div>
+          <div className="cart-inner">{this.state.description}</div>
+          <div className="cart-inner">
+            <button onClick={this.addToCartHandler}>Add to Cart</button>
+          </div>
+        </div>
       </div>
     );
   };

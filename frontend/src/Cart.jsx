@@ -15,9 +15,9 @@ class UnconnectedCart extends Component {
           return(<div className="cart-outer">
             <img className="cart-img" src={"http://localhost:4000" + item.url} />
             <div>
-            <div className="cart-name">{item.name}</div>
-            <div className="cart-inner">{item.price}</div>
-            <div className="cart-inner">{item.description}</div>
+              <div className="cart-name">{item.name}</div>
+              <div className="cart-inner">{item.price}</div>
+              <div className="cart-inner">{item.description}</div>
             </div>
           </div>)
         })}
