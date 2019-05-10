@@ -11,7 +11,6 @@ let reducer = (state, action) => {
     return { ...state, querySearch: action.q };
   }
   if (action.type === "addToCart") {
-    console.log("item added to cart");
     return { ...state, cart: action.addCart };
   }
   if (action.type === "all-items") {

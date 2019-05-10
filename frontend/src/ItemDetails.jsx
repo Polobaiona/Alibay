@@ -38,14 +38,14 @@ class UnconnectedItemDetails extends Component {
       });
   };
   addToCartHandler = () => {
-    this.state.allCart.push(this.state);
-    console.log(this.state.allCart);
+    let cart = this.props.cart
+    cart.push(this.state)
+    console.log(cart)
     this.props.dispatch({
       type: "addToCart",
-      addCart: this.state.allCart
-    });
-    alert("Item added to cart!");
-  };
+      addCart: cart
+    })
+  }
 
   render = () => {
     let url = "http://localhost:4000" + this.state.url;
